@@ -223,7 +223,7 @@ weather_data_pipeline/
 
 The diagram below illustrates the end-to-end weather data pipeline, from API ingestion through staging, replication, and analytics.
 
-![Weather Data Pipeline Architecture](image/weather_pipeline_architecture.png) 
+![Weather Data Pipeline Architecture](incremental-weather-etl/image/weather_pipeline_architecture.png) 
 
 ## 9) Future Enhancements
 
