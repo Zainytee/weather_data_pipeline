@@ -192,12 +192,20 @@ LIMIT 10;
 ## 7) GitHub Repository Structure
 
 ```
-.
-├── ingest_weatherbit.py        # Python ETL script
-├── .env                        # Environment variables
-├── README.md                   # Project documentation
-├── requirements.txt            # Python dependencies
-└── airbyte/                    # Airbyte OSS configuration files
+weather_data_pipeline/
+├── incremental-weather-etl/                # Main ETL pipeline repository
+│   ├── config/                             # Configuration files
+│   │   ├── airbyte/                        # Airbyte source/destination configs
+│   │   └── env_templates/                  # Template environment files for setup
+│   ├── image/                              # Architecture diagrams and pipeline visuals
+│   ├── ingest_weatherbit.py                # Python script to ingest weather data from API → MongoDB
+│   ├── requirements.txt                    # Python dependencies for the pipeline
+│   ├── sql_queries.sql                     # Analytical and validation queries (e.g., DuckDB)
+│   ├── .env                                # Environment variables (excluded from version control)
+│   └── venv/                               # Local Python virtual environment (not committed)
+├── .gitignore                              # Git ignore rules for sensitive files and local environments
+└── README.md                               # Project documentation, setup instructions, and usage
+
 ```
 
 ---
@@ -211,6 +219,11 @@ LIMIT 10;
 * **Open-source Airbyte deployment** on Minikube
 
 ---
+## Pipeline Architecture
+
+The diagram below illustrates the end-to-end weather data pipeline, from API ingestion through staging, replication, and analytics.
+
+![Weather Data Pipeline Architecture](image/weather_pipeline_architecture.png) 
 
 ## 9) Future Enhancements
 
