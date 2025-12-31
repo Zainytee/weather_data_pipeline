@@ -1,0 +1,3 @@
+venv
+incremental-weather-etl\.env
+incremental-weather-etl\config\
