@@ -115,7 +115,7 @@ python ingest_weatherbit.py
 Expected output:
 
 ```
-fetched=24, upserted/modified=24
+fetched=49, upserted/modified=49
 ```
 
 ---
