@@ -94,10 +94,12 @@ db.weather.createIndex({ city: 1, dt: 1 }, { unique: true })
 Create a `.env` file with:
 
 ```dotenv
-DB_USERNAME=weather_user
-DB_PASSWORD=weather123
-DB_NAME=weather_pipeline
-BASE_URL=https://api.weatherbit.io/v2.0/forecast/hourly?city=London&key=YOUR_API_KEY
+DB_USERNAME=xxxxxx
+DB_PASSWORD=xxxxxx
+DB_NAME=xxxxxx
+CLUSTER_NAME=xxxxxx
+API_KEY = xxxxxx
+BASE_URL=https://api.weatherbit.io/v2.0/forecast/hourly?city=London&key=API_KEY
 ```
 
 ---
@@ -128,7 +130,7 @@ Airbyte will replicate MongoDB staging data into DuckDB/MotherDuck.
 * Connection string:
 
 ```text
-mongodb://weather_user:weather123@<HOST>:27017/weather_pipeline?authSource=weather_pipeline&replicaSet=rs0
+mongodb+srv://<DB_USERNAME>:<DB_PASSWORD>>@<CLUSTER_NAME>.pgktmnv.mongodb.net/<DB_NAME>?retryWrites=true&w=majority
 ```
 
 * Use `localhost` if Airbyte runs on the same machine; use PC IP if using Minikube.
@@ -218,12 +220,25 @@ weather_data_pipeline/
 * **Analytics-ready tables** for dashboards
 * **Open-source Airbyte deployment** on Minikube
 
+## System Architecture and Deployment Overview
+
+The screenshots below demonstrate that Airbyte OSS was successfully deployed
+on a local Kubernetes cluster using Minikube and that the Airbyte web UI
+was accessible for source and destination configuration.
+
+### Airbyte Pods Running on Minikube
+![Airbyte pods running on Minikube](incremental-weather-etl/images/minikube_pods.png)
+
+### Airbyte UI – Source and Destination Configuration
+![Airbyte UI showing MongoDB source connection](incremental-weather-etl/images/airbyte_ui_connection.png)
+
+
 ---
 ## Pipeline Architecture
 
 The diagram below illustrates the end-to-end weather data pipeline, from API ingestion through staging, replication, and analytics.
 
-![Weather Data Pipeline Architecture](incremental-weather-etl/image/weather_pipeline_architecture.png) 
+![Weather Data Pipeline Architecture](incremental-weather-etl/images/weather_pipeline_architecture.png) 
 
 ## 9) Future Enhancements
 
